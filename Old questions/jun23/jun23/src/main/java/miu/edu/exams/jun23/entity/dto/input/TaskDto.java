@@ -13,6 +13,7 @@ public class TaskDto {
 
     private Long task_id;
     private String description;
+    private EventDto event;
 
 
 

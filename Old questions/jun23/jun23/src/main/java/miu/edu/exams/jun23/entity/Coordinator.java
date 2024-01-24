@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.util.List;
 
@@ -18,7 +21,9 @@ public class Coordinator {
     private Long co_id;
     private String name;
     private String gender;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+    //@BatchSize(size = 2)
     @JoinTable(name="Coordinators_Events",
             joinColumns = {@JoinColumn(name = "co_id")},
             inverseJoinColumns = {@JoinColumn(name="event_id")})

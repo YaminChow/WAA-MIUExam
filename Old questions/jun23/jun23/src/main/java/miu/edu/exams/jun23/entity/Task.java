@@ -11,14 +11,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Task {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long task_id;
     private String description;
     @ManyToOne
-    @JoinColumn(name = "event_id")
+    @JsonBackReference
     private Event event;
     public Task(String description){
         this.description = description;

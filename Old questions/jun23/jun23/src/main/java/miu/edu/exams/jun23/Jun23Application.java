@@ -34,25 +34,59 @@ public class Jun23Application {
 		List<Task> taskList = new ArrayList<>();
 		Task task1 = new Task("Prepare room setup");
 		Task task2 = new Task("Confirm with participants");
+
 		taskList.add(task1);
 		taskList.add(task2);
-		Event event1 = new Event("Conference","IA",taskList);
+		Event event1 = new Event("Conference","IA",new ArrayList<>());
+		task1.setEvent(event1);
+		task2.setEvent(event1);
+		event1.getTasks().add(task1);
+		event1.getTasks().add(task2);
 		eventList.add(event1);
 
 		List<Task> taskList2 = new ArrayList<>();
 		Task task4 = new Task("Purchase refreshments ");
 		Task task6 = new Task("Send invitations");
+		Task task7 = new Task("Testing");
 		taskList2.add(task4);
 		taskList2.add(task6);
+		taskList2.add(task7);
 		Event event2 = new Event("Faculty meeting","IA",taskList2);
+		task4.setEvent(event2);
+		task6.setEvent(event2);
+		task7.setEvent(event2);
 
+		event2.getTasks().add(task4);
+		event2.getTasks().add(task6);
+		event2.getTasks().add(task7);
 		List<Task> taskList3 = new ArrayList<>();
 		Task task5 = new Task("Prepare roster");
 		taskList3.add (task5);
 		Event event3 = new Event("Technical workshop","FL",taskList3);
+		task5.setEvent(event3);
+		event3.getTasks().add(task5);
+
+		List<Task> taskList5 = new ArrayList<>();
+		Task task8 = new Task("Prepare room setup5");
+		Task task9 = new Task("Confirm with participants5");
+
+		taskList5.add(task8);
+		taskList5.add(task9);
+		Event event5 = new Event("Conference5","IA",new ArrayList<>());
+		task8.setEvent(event5);
+		task9.setEvent(event5);
+		event5.getTasks().add(task8);
+		event5.getTasks().add(task9);
+
+
+
 		List<Event> eventList1 = new ArrayList<>();
 		eventList1.add(event2);
 		eventList1.add(event3);
+		eventList1.add(event5);
+
+
+
 
 		Address address1 = new Address("United States","Orlando","FL","14565");
 		Address address2 = new Address("United States","FairField","IA","52557");

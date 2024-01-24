@@ -20,7 +20,7 @@ public class Address {
     private String city;
     private String state;
     private String zipcode;
-    @OneToOne(mappedBy = "address")
+    @OneToOne(mappedBy = "address", fetch = FetchType.EAGER)
     @JsonBackReference
     private Coordinator coordinator;
 
@@ -30,8 +30,4 @@ public class Address {
         this.zipcode =zipcode;
         this.state = state;
     }
-
-
-
-
 }

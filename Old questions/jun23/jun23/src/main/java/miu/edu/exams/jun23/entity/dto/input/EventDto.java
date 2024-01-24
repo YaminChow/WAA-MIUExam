@@ -11,10 +11,9 @@ import java.util.List;
 
 @Data
 public class EventDto {
-
+    private Long event_id;
     private String title;
     private String state;
-
     List<TaskDto> tasks;
     List <CoordinatorDTO> coordinatorList;
 

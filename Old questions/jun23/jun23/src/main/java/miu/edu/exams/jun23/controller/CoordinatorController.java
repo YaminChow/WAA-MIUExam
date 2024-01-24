@@ -72,6 +72,13 @@ public class CoordinatorController {
             @RequestParam(value = "gender", required = false) String gender,
             @RequestParam(value = "name",required = false) String name)
     {
+        if (gender != null && name != null){
+            return coordinatorRepo.findCoordinatorByNameContainingAndGender(name, gender);
+        }
+        if(gender != null){
+            return coordinatorRepo.findCoordinatorByGender(gender);
+        }
+
         //return coordinatorRepo.getTasksByCoordinatorId(co_id);
         return coordinatorService.getCoordinatorByNameContainingAndGender(name, gender);
     }

@@ -6,7 +6,11 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,11 +24,13 @@ public class Event {
     private Long event_id;
     private String title;
     private String state;
-    @OneToMany(mappedBy = "event",cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
+    @Fetch(FetchMode.SUBSELECT)
+    @JoinColumn(name ="event_id")
+    @JsonManagedReference
+    List<Task> tasks = new ArrayList<>();
 
-    List<Task> tasks;
-
-    @ManyToMany(mappedBy = "eventList")
+    @ManyToMany(mappedBy = "eventList", fetch =  FetchType.LAZY)
     @JsonBackReference
     List <Coordinator> coordinatorList;
 
